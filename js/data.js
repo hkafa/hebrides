@@ -33,7 +33,7 @@ export const TRIP_DATA = {
         { name: 'Tarbert', detail: 'Isle of Harris', lat: 57.898166, lon: -6.806825, day: 3, dayLabel: '3', badge: 'ferry', badgeText: 'ferry' },
         { name: 'Callanish', detail: 'Isle of Lewis', lat: 58.201502, lon: -6.744959, day: 4, dayLabel: '4', badge: null },
         { name: 'Butt of Lewis', detail: 'Northernmost point', lat: 58.5166667, lon: -6.2666667, day: 5, dayLabel: '5', badge: null },
-        { name: 'Tarbert', detail: 'Isle of Harris (return south)', lat: 57.898166, lon: -6.806825, day: 6, dayLabel: '6', badge: null },
+        { name: 'Tarbert', detail: 'Isle of Harris (return south)', lat: 57.92, lon: -6.85, day: 6, dayLabel: '6', badge: null },
         { name: 'Uig & Portree', detail: 'Isle of Skye, ferry + same day', lat: 57.5868588, lon: -6.3758522, day: 7, dayLabel: '7', badge: 'combined', badgeText: 'ferry + same day', extraMarker: { lat: 57.413346, lon: -6.1947426, name: 'Portree' } },
         { name: 'Armadale', detail: 'Isle of Skye', lat: 57.0648485, lon: -5.9010319, day: 8, dayLabel: '8', badge: 'end', badgeText: 'finish' },
     ],
