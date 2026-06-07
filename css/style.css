@@ -6,20 +6,24 @@
 }
 
 :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-tertiary: #21262d;
-    --border: #30363d;
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
-    --text-muted: #484f58;
-    --accent: #58a6ff;
-    --accent-glow: rgba(88, 166, 255, 0.15);
-    --green: #3fb950;
-    --orange: #d29922;
-    --red: #f85149;
-    --purple: #bc8cff;
-    --font-mono: 'JetBrains Mono', monospace;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --border: #dee2e6;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #868e96;
+    --accent: #1971c2;
+    --accent-light: #e7f5ff;
+    --green: #2b8a3e;
+    --green-light: #ebfbee;
+    --orange: #e67700;
+    --orange-light: #fff9db;
+    --red: #c92a2a;
+    --red-light: #fff5f5;
+    --purple: #7048e8;
+    --purple-light: #f3f0ff;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 html {
@@ -27,56 +31,32 @@ html {
 }
 
 body {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* === Hero === */
 .hero {
-    position: relative;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem 2.5rem;
     text-align: center;
     border-bottom: 1px solid var(--border);
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(88, 166, 255, 0.08) 0%, transparent 60%),
-        var(--bg-primary);
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
-.glitch-text {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-}
-
-.subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-weight: 300;
-    margin-bottom: 2.5rem;
 }
 
 .stats {
@@ -92,8 +72,8 @@ body {
 }
 
 .stat-value {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.75rem;
+    font-weight: 700;
     color: var(--accent);
 }
 
@@ -101,98 +81,65 @@ body {
     font-size: 0.75rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
 }
 
 /* === Content Wrap === */
 .content-wrap {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
 }
 
 /* === Sections === */
 .section-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .section-header h2 {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.section-subtitle {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-}
-
-.prompt {
-    color: var(--green);
-    margin-right: 0.25rem;
-}
-
-/* === Tips Section === */
-.tips-section {
-    margin-bottom: 3rem;
-}
-
-.tips-intro {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-.tips-intro p + p {
-    margin-top: 0.75rem;
-}
-
-.tips-disclosure {
-    font-style: italic;
-    color: var(--text-muted);
-}
-
-.tips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
-}
-
-.tip-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tip-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 15px var(--accent-glow);
-}
-
-.tip-title {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
-.tip-text {
+/* === Links / Resources Section === */
+.resources-section {
+    margin-bottom: 2.5rem;
+}
+
+.resources-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.resources-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resources-list a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+}
+
+.resources-list a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.resources-list .resource-desc {
+    color: var(--text-muted);
     font-size: 0.8rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
 }
 
 /* === Map === */
 .map-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 #map {
@@ -205,31 +152,21 @@ body {
 
 .leaflet-container {
     background: var(--bg-secondary);
-    font-family: var(--font-mono);
-}
-
-.leaflet-control-zoom a {
-    background: var(--bg-secondary) !important;
-    color: var(--text-primary) !important;
-    border-color: var(--border) !important;
-}
-
-.leaflet-control-zoom a:hover {
-    background: var(--bg-tertiary) !important;
+    font-family: var(--font-sans);
 }
 
 .leaflet-popup-content-wrapper {
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     color: var(--text-primary);
     border: 1px solid var(--border);
     border-radius: 6px;
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .leaflet-popup-tip {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
+    background: var(--bg-primary);
 }
 
 .leaflet-popup-content {
@@ -238,7 +175,7 @@ body {
 
 .popup-title {
     font-weight: 600;
-    color: var(--accent);
+    color: var(--text-primary);
     margin-bottom: 2px;
 }
 
@@ -247,148 +184,127 @@ body {
     font-size: 0.75rem;
 }
 
+/* Numbered map markers */
+.numbered-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
 /* === Timeline === */
 .timeline-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 11px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .timeline-item {
-    position: relative;
-    padding: 0 0 2rem 2rem;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: transform 0.15s ease;
 }
 
-.timeline-item:last-child {
-    padding-bottom: 0;
-}
-
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -1.95rem;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    background: var(--bg-primary);
-    transition: all 0.2s ease;
-    z-index: 1;
-}
-
-.timeline-item:first-child::before {
-    border-color: var(--green);
-    background: var(--green);
-    box-shadow: 0 0 8px rgba(63, 185, 80, 0.4);
-}
-
-.timeline-item:last-child::before {
-    border-color: var(--red);
-    background: var(--red);
-    box-shadow: 0 0 8px rgba(248, 81, 73, 0.4);
-}
-
-.timeline-item:hover::before {
-    border-color: var(--accent);
-    box-shadow: 0 0 8px var(--accent-glow);
-}
-
-.timeline-item:first-child:hover::before {
-    border-color: var(--green);
-    box-shadow: 0 0 12px rgba(63, 185, 80, 0.6);
-}
-
-.timeline-item:last-child:hover::before {
-    border-color: var(--red);
-    box-shadow: 0 0 12px rgba(248, 81, 73, 0.6);
+.timeline-item:hover {
+    transform: translateX(3px);
 }
 
 .timeline-card {
-    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-primary);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 1rem 1.25rem;
-    transition: all 0.2s ease;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .timeline-item:hover .timeline-card {
     border-color: var(--accent);
-    box-shadow: 0 0 20px var(--accent-glow);
-    transform: translateX(4px);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 }
 
-.timeline-day {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.25rem;
+.timeline-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.timeline-marker--start {
+    background: var(--green);
+}
+
+.timeline-marker--end {
+    background: var(--red);
+}
+
+.timeline-info {
+    flex: 1;
+    min-width: 0;
 }
 
 .timeline-name {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.25rem;
 }
 
 .timeline-detail {
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 .timeline-badge {
-    display: inline-block;
     font-size: 0.65rem;
     padding: 2px 8px;
     border-radius: 10px;
-    margin-top: 0.5rem;
     font-weight: 500;
+    flex-shrink: 0;
 }
 
 .badge-ferry {
-    background: rgba(210, 153, 34, 0.15);
+    background: var(--orange-light);
     color: var(--orange);
-    border: 1px solid rgba(210, 153, 34, 0.3);
 }
 
 .badge-start {
-    background: rgba(63, 185, 80, 0.15);
+    background: var(--green-light);
     color: var(--green);
-    border: 1px solid rgba(63, 185, 80, 0.3);
 }
 
 .badge-end {
-    background: rgba(248, 81, 73, 0.15);
+    background: var(--red-light);
     color: var(--red);
-    border: 1px solid rgba(248, 81, 73, 0.3);
 }
 
 .badge-combined {
-    background: rgba(188, 140, 255, 0.15);
+    background: var(--purple-light);
     color: var(--purple);
-    border: 1px solid rgba(188, 140, 255, 0.3);
 }
 
 /* === Day Page === */
 .day-page {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 1.5rem;
 }
@@ -398,36 +314,37 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--border);
 }
 
 .nav-link {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.85rem;
     color: var(--accent);
     text-decoration: none;
-    padding: 0.4rem 0.8rem;
+    padding: 0.35rem 0.75rem;
     border: 1px solid var(--border);
     border-radius: 6px;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .nav-link:hover {
+    background: var(--accent-light);
     border-color: var(--accent);
-    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .nav-link.disabled {
     color: var(--text-muted);
     cursor: default;
-    border-color: transparent;
+    border-color: var(--border);
+    background: var(--bg-secondary);
 }
 
 .nav-link.disabled:hover {
-    box-shadow: none;
-    border-color: transparent;
+    background: var(--bg-secondary);
+    border-color: var(--border);
 }
 
 .nav-overview {
@@ -437,20 +354,19 @@ body {
 /* === Day Header === */
 .day-header {
     margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
 }
 
 .day-number {
     font-size: 0.75rem;
     color: var(--accent);
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     margin-bottom: 0.25rem;
 }
 
 .day-title {
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-size: clamp(1.4rem, 4vw, 2rem);
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.25rem;
@@ -459,7 +375,7 @@ body {
 .day-subtitle {
     font-size: 0.9rem;
     color: var(--text-secondary);
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* === Day Map === */
@@ -468,7 +384,7 @@ body {
 }
 
 .day-map-section #map {
-    height: 350px;
+    height: 300px;
 }
 
 /* === Day Distance === */
@@ -477,7 +393,7 @@ body {
     align-items: baseline;
     gap: 0.5rem;
     flex-wrap: wrap;
-    padding: 1rem 1.25rem;
+    padding: 0.75rem 1rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -485,13 +401,13 @@ body {
 }
 
 .distance-value {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: var(--accent);
 }
 
 .distance-unit {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
 }
 
@@ -505,14 +421,14 @@ body {
     font-size: 0.75rem;
     color: var(--green);
     text-decoration: none;
-    border: 1px solid rgba(63, 185, 80, 0.3);
+    border: 1px solid var(--green);
     padding: 2px 8px;
     border-radius: 4px;
-    transition: all 0.2s ease;
+    transition: background 0.15s ease;
 }
 
 .gpx-download:hover {
-    background: rgba(63, 185, 80, 0.1);
+    background: var(--green-light);
 }
 
 .gpx-pending {
@@ -521,7 +437,7 @@ body {
     font-style: italic;
 }
 
-/* === Day Sections (food, campsites, ferry) === */
+/* === Day Sections === */
 .day-section {
     margin-bottom: 2rem;
 }
@@ -533,11 +449,11 @@ body {
 }
 
 .info-card {
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 1rem 1.25rem;
-    transition: border-color 0.2s ease;
+    padding: 0.85rem 1rem;
+    transition: border-color 0.15s ease;
 }
 
 .info-card:hover {
@@ -545,16 +461,7 @@ body {
 }
 
 .info-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.4rem;
-}
-
-.card-icon {
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
 }
 
 .card-title {
@@ -567,8 +474,8 @@ body {
     font-size: 0.7rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
 }
 
 .card-notes {
@@ -579,63 +486,50 @@ body {
 
 .card-link {
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
     font-size: 0.75rem;
     color: var(--accent);
     text-decoration: none;
-    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
 }
 
 .card-link:hover {
-    color: var(--text-primary);
+    border-bottom-color: var(--accent);
 }
 
 .card-link-pending {
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
     font-size: 0.7rem;
     color: var(--text-muted);
     font-style: italic;
 }
 
-/* Ferry card accent */
-.ferry-card {
-    border-left: 3px solid var(--orange);
-}
-
-/* Camp card accent */
-.camp-card {
-    border-left: 3px solid var(--green);
-}
-
-/* Food card accent */
-.food-card {
-    border-left: 3px solid var(--purple);
-}
-
-/* Custom/generic card accent */
-.custom-card {
-    border-left: 3px solid var(--accent);
-}
+/* Card accent borders */
+.ferry-card { border-left: 3px solid var(--orange); }
+.camp-card { border-left: 3px solid var(--green); }
+.food-card { border-left: 3px solid var(--purple); }
+.custom-card { border-left: 3px solid var(--accent); }
 
 /* === Weather Widget === */
 .weather-section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .weather-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
 }
 
 .weather-date-picker {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border);
 }
 
@@ -645,23 +539,19 @@ body {
 }
 
 .weather-date-picker input[type="date"] {
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-size: 0.85rem;
-    background: var(--bg-tertiary);
+    background: var(--bg-primary);
     color: var(--text-primary);
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 0.4rem 0.6rem;
+    padding: 0.35rem 0.6rem;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.15s ease;
 }
 
 .weather-date-picker input[type="date"]:focus {
     border-color: var(--accent);
-}
-
-.weather-date-picker input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(0.7);
 }
 
 .weather-loading {
@@ -681,74 +571,64 @@ body {
 .weather-main {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     flex: 1;
     min-width: 200px;
 }
 
 .weather-icon {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     flex-shrink: 0;
 }
 
 .weather-icon::after {
     font-weight: 700;
-    font-family: var(--font-mono);
 }
 
-.weather-icon--sun { background: rgba(210, 153, 34, 0.2); }
-.weather-icon--sun::after { content: '//'; color: var(--orange); }
-
-.weather-icon--cloud-sun { background: rgba(139, 148, 158, 0.2); }
-.weather-icon--cloud-sun::after { content: '/~'; color: var(--text-secondary); }
-
-.weather-icon--fog { background: rgba(72, 79, 88, 0.3); }
-.weather-icon--fog::after { content: '~~'; color: var(--text-muted); }
-
-.weather-icon--drizzle { background: rgba(88, 166, 255, 0.15); }
-.weather-icon--drizzle::after { content: '..'; color: var(--accent); }
-
-.weather-icon--rain { background: rgba(88, 166, 255, 0.2); }
-.weather-icon--rain::after { content: '||'; color: var(--accent); }
-
-.weather-icon--snow { background: rgba(230, 237, 243, 0.15); }
-.weather-icon--snow::after { content: '**'; color: var(--text-primary); }
-
-.weather-icon--showers { background: rgba(88, 166, 255, 0.2); }
-.weather-icon--showers::after { content: '/|'; color: var(--accent); }
-
-.weather-icon--storm { background: rgba(248, 81, 73, 0.15); }
-.weather-icon--storm::after { content: '!!'; color: var(--red); }
-
-/* fallback */
-.weather-icon--undefined { background: rgba(72, 79, 88, 0.2); }
-.weather-icon--undefined::after { content: '??'; color: var(--text-muted); }
+.weather-icon--sun { background: #fff3bf; }
+.weather-icon--sun::after { content: '\2600'; }
+.weather-icon--cloud-sun { background: #e9ecef; }
+.weather-icon--cloud-sun::after { content: '\26c5'; }
+.weather-icon--fog { background: #e9ecef; }
+.weather-icon--fog::after { content: '\2601'; }
+.weather-icon--drizzle { background: var(--accent-light); }
+.weather-icon--drizzle::after { content: '\1f327'; }
+.weather-icon--rain { background: var(--accent-light); }
+.weather-icon--rain::after { content: '\1f327'; }
+.weather-icon--snow { background: #e9ecef; }
+.weather-icon--snow::after { content: '\2744'; }
+.weather-icon--showers { background: var(--accent-light); }
+.weather-icon--showers::after { content: '\1f326'; }
+.weather-icon--storm { background: var(--red-light); }
+.weather-icon--storm::after { content: '\26a1'; }
+.weather-icon--undefined { background: #e9ecef; }
+.weather-icon--undefined::after { content: '\2601'; }
 
 .weather-temps {
     display: flex;
     align-items: baseline;
-    gap: 0.25rem;
+    gap: 0.2rem;
 }
 
 .weather-high {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .weather-sep {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
 }
 
 .weather-low {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: var(--text-secondary);
 }
@@ -773,11 +653,11 @@ body {
     font-size: 0.65rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
 }
 
 .weather-detail-value {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-primary);
 }
@@ -785,12 +665,12 @@ body {
 .weather-source {
     color: var(--text-muted) !important;
     font-style: italic;
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
 }
 
 /* === Plan Section === */
 .plan-section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .plan-text {
@@ -798,29 +678,28 @@ body {
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     border-radius: 8px;
-    padding: 1rem 1.25rem;
+    padding: 0.85rem 1rem;
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.7;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .map-open-link {
     display: inline-block;
-    margin-top: 0.75rem;
-    font-family: var(--font-mono);
+    margin-top: 0.5rem;
     font-size: 0.8rem;
     color: var(--accent);
     text-decoration: none;
-    padding: 0.4rem 0.8rem;
+    padding: 0.35rem 0.75rem;
     border: 1px solid var(--border);
     border-radius: 6px;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .map-open-link:hover {
+    background: var(--accent-light);
     border-color: var(--accent);
-    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 /* === Weather Error === */
@@ -835,7 +714,7 @@ body {
     text-align: center;
     padding: 3rem;
     color: var(--red);
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 /* === Footer === */
@@ -850,7 +729,7 @@ footer {
 /* === Responsive === */
 @media (max-width: 640px) {
     .hero {
-        padding: 2.5rem 1.5rem;
+        padding: 2rem 1.5rem;
     }
 
     .stats {
@@ -866,19 +745,7 @@ footer {
     }
 
     .day-map-section #map {
-        height: 280px;
-    }
-
-    .timeline {
-        padding-left: 1.5rem;
-    }
-
-    .timeline-item {
-        padding-left: 1.5rem;
-    }
-
-    .tips-grid {
-        grid-template-columns: 1fr;
+        height: 250px;
     }
 
     .info-cards {
@@ -888,7 +755,7 @@ footer {
     .weather-grid {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 0.75rem;
     }
 
     .weather-details {
@@ -906,6 +773,10 @@ footer {
     }
 
     .day-nav {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .timeline-card {
+        padding: 0.6rem 0.75rem;
     }
 }

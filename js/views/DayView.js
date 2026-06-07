@@ -1,7 +1,6 @@
 /**
  * Day detail view — fully dynamic renderer.
  * Reads sections from per-day config files (js/days/dayN.js).
- * Sections are rendered in the order they appear in the config.
  */
 
 import { TRIP_DATA } from '../data.js';
@@ -28,7 +27,7 @@ export class DayView {
             <div class="day-page">
                 <section class="weather-section">
                     <div class="section-header">
-                        <h2><span class="prompt">&gt;</span> weather.forecast()</h2>
+                        <h2>Weather</h2>
                     </div>
                     <div class="weather-card">
                         <div class="weather-date-picker">
@@ -42,9 +41,9 @@ export class DayView {
                 </section>
 
                 <nav class="day-nav">
-                    ${prevLink ? `<a href="${prevLink}" class="nav-link">&lt; Day ${dayIndex - 1}</a>` : '<span class="nav-link disabled">&lt;</span>'}
-                    <a href="#/" class="nav-link nav-overview">overview</a>
-                    ${nextLink ? `<a href="${nextLink}" class="nav-link">Day ${dayIndex + 1} &gt;</a>` : '<span class="nav-link disabled">&gt;</span>'}
+                    ${prevLink ? `<a href="${prevLink}" class="nav-link">&larr; Day ${dayIndex - 1}</a>` : '<span class="nav-link disabled">&larr;</span>'}
+                    <a href="#/" class="nav-link nav-overview">Overview</a>
+                    ${nextLink ? `<a href="${nextLink}" class="nav-link">Day ${dayIndex + 1} &rarr;</a>` : '<span class="nav-link disabled">&rarr;</span>'}
                 </nav>
 
                 <header class="day-header">
@@ -57,31 +56,32 @@ export class DayView {
                     <div id="map"></div>
                 </section>
 
-                ${this._renderPlan(day)}
+                <section class="distance-section">
+                    <div class="section-header">
+                        <h2>Distance</h2>
+                    </div>
+                    <div class="day-distance">
+                        <span class="distance-value">${day.distanceKm}</span>
+                        <span class="distance-unit">km</span>
+                        <span class="distance-note">${day.distanceNote}</span>
+                        ${day.gpxFile ? `<a href="${day.gpxFile}" download class="gpx-download">Download GPX</a>` : ''}
+                    </div>
+                </section>
 
-                <div class="day-distance">
-                    <span class="distance-value">${day.distanceKm}</span>
-                    <span class="distance-unit">km</span>
-                    <span class="distance-note">${day.distanceNote}</span>
-                    ${day.gpxFile ? `<a href="${day.gpxFile}" download class="gpx-download">Download GPX</a>` : '<span class="gpx-pending">GPX coming soon</span>'}
-                </div>
+                ${this._renderPlan(day)}
 
                 <div id="day-sections"></div>
             </div>
 
             <footer>
-                <p>// hebrides trip planner &mdash; 2026</p>
+                <p>Hebrides trip planner &mdash; 2026</p>
             </footer>
         `;
 
-        // Render dynamic sections
         this._renderSections(day);
-
-        // Mount map
         this.mapManager.mount('map');
         this.mapManager.showDayRoute(day);
 
-        // Wire weather
         const dateInput = document.getElementById('weather-date');
         dateInput.addEventListener('change', () => {
             this._loadWeather(day, dateInput.value);
@@ -147,13 +147,13 @@ export class DayView {
             : '';
 
         const mapLinkHtml = day.mapLink
-            ? `<a href="${day.mapLink}" target="_blank" rel="noopener" class="map-open-link">Open in Google Maps &gt;</a>`
+            ? `<a href="${day.mapLink}" target="_blank" rel="noopener" class="map-open-link">Open in Google Maps &rarr;</a>`
             : '';
 
         return `
             <section class="day-section plan-section">
                 <div class="section-header">
-                    <h2><span class="prompt">&gt;</span> plan.today()</h2>
+                    <h2>Plan</h2>
                 </div>
                 ${planHtml}
                 ${mapLinkHtml}
@@ -161,11 +161,6 @@ export class DayView {
         `;
     }
 
-    /**
-     * Render all sections from the day config dynamically.
-     * Each section has: id, title, items[].
-     * The `id` determines the card border color (ferry/food/campsites/custom).
-     */
     _renderSections(day) {
         const sectionsContainer = document.getElementById('day-sections');
         if (!sectionsContainer || !day.sections) return;
@@ -176,9 +171,12 @@ export class DayView {
             const sectionEl = document.createElement('section');
             sectionEl.className = 'day-section';
 
+            // Capitalise first letter of title
+            const title = section.title.charAt(0).toUpperCase() + section.title.slice(1);
+
             sectionEl.innerHTML = `
                 <div class="section-header">
-                    <h2><span class="prompt">&gt;</span> ${section.title}</h2>
+                    <h2>${title}</h2>
                 </div>
                 <div class="info-cards">
                     ${section.items.map(item => this._renderCard(item, section.id)).join('')}
@@ -189,9 +187,6 @@ export class DayView {
         }
     }
 
-    /**
-     * Render a single card. Works for any section type.
-     */
     _renderCard(item, sectionId) {
         const styleClass = this._getCardStyle(sectionId);
         const meta = item.meta ? `<div class="card-meta">${item.meta}</div>` : '';
@@ -200,7 +195,7 @@ export class DayView {
         let linkHtml = '';
         if (item.link) {
             const linkText = item.linkText || 'Details';
-            linkHtml = `<a href="${item.link}" target="_blank" rel="noopener" class="card-link">${linkText} &gt;</a>`;
+            linkHtml = `<a href="${item.link}" target="_blank" rel="noopener" class="card-link">${linkText} &rarr;</a>`;
         } else if (sectionId === 'ferry') {
             linkHtml = '<span class="card-link-pending">Booking link TBC</span>';
         }

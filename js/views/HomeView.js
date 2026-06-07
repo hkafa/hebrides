@@ -1,5 +1,5 @@
 /**
- * Home/welcome page view — hero, tips, overview map, and timeline.
+ * Home/welcome page view — hero, resources, map, timeline.
  */
 
 import { TRIP_DATA } from '../data.js';
@@ -13,15 +13,14 @@ export class HomeView {
         container.innerHTML = `
             <header class="hero">
                 <div class="hero-content">
-                    <h1 class="glitch-text">Outer Hebrides</h1>
-                    <p class="subtitle">// cycling the edge of the world</p>
+                    <h1 class="hero-title">Outer Hebrides</h1>
                     <div class="stats">
                         <div class="stat">
                             <span class="stat-value">~${TRIP_DATA.meta.totalKm}</span>
                             <span class="stat-label">km</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-value">${TRIP_DATA.meta.totalStops}</span>
+                            <span class="stat-value">${TRIP_DATA.stops.length}</span>
                             <span class="stat-label">stops</span>
                         </div>
                         <div class="stat">
@@ -33,42 +32,51 @@ export class HomeView {
             </header>
 
             <div class="content-wrap">
-                <section class="tips-section">
+                <section class="resources-section">
                     <div class="section-header">
-                        <h2><span class="prompt">&gt;</span> tips.whatToExpect()</h2>
-                        <p class="section-subtitle">Wisdom from those who've done it</p>
+                        <h2>Useful links</h2>
                     </div>
-                    <div class="tips-intro">
-                        <p>The Hebridean Way by bike is a challenge all cyclists should consider &mdash; what's not to like about looking at the weather forecast back home and boring your family by pointing out how far north those islands are!</p>
-                        <p class="tips-disclosure">Full disclosure: we skimped a little by starting in Barra rather than Vatersay, so strictly speaking we only did 95% of it. If you want a challenge without needing to be super fit, this might be for you.</p>
-                    </div>
-                    <div class="tips-grid">
-                        ${TRIP_DATA.tips.map(tip => `
-                            <div class="tip-card">
-                                <h3 class="tip-title">${tip.title}</h3>
-                                <p class="tip-text">${tip.text}</p>
-                            </div>
-                        `).join('')}
-                    </div>
+                    <ul class="resources-list">
+                        <li>
+                            <a href="https://www.visitouterhebrides.co.uk/see-and-do/activities/the-hebridean-way" target="_blank" rel="noopener">The Hebridean Way</a>
+                            <span class="resource-desc">&mdash; official route info</span>
+                        </li>
+                        <li>
+                            <a href="https://www.tripadvisor.co.uk/Attraction_Review-g186500-d10145498-Reviews-The_Hebridean_Way-Scotland.html" target="_blank" rel="noopener">TripAdvisor reviews</a>
+                            <span class="resource-desc">&mdash; real experiences from cyclists</span>
+                        </li>
+                        <li>
+                            <a href="https://www.calmac.co.uk/" target="_blank" rel="noopener">CalMac Ferries</a>
+                            <span class="resource-desc">&mdash; book ferry crossings</span>
+                        </li>
+                        <li>
+                            <a href="https://www.visitouterhebrides.co.uk/planning-your-trip/camping" target="_blank" rel="noopener">Camping guide</a>
+                            <span class="resource-desc">&mdash; wild camping &amp; campsite info</span>
+                        </li>
+                        <li>
+                            <a href="https://www.scotrail.co.uk/" target="_blank" rel="noopener">ScotRail</a>
+                            <span class="resource-desc">&mdash; train connections</span>
+                        </li>
+                    </ul>
                 </section>
 
                 <section class="map-section">
                     <div class="section-header">
-                        <h2><span class="prompt">&gt;</span> route.overview()</h2>
+                        <h2>Route overview</h2>
                     </div>
                     <div id="map"></div>
                 </section>
 
                 <section class="timeline-section">
                     <div class="section-header">
-                        <h2><span class="prompt">&gt;</span> days.list()</h2>
+                        <h2>Daily stops</h2>
                     </div>
                     <div class="timeline" id="timeline"></div>
                 </section>
             </div>
 
             <footer>
-                <p>// hebrides trip planner &mdash; 2026</p>
+                <p>Hebrides trip planner &mdash; 2026</p>
             </footer>
         `;
 
@@ -90,11 +98,17 @@ export class HomeView {
                 badgeHtml = `<span class="timeline-badge badge-${stop.badge}">${stop.badgeText}</span>`;
             }
 
+            const isStart = i === 0;
+            const isEnd = i === stops.length - 1;
+            const markerClass = isStart ? 'timeline-marker--start' : isEnd ? 'timeline-marker--end' : '';
+
             item.innerHTML = `
                 <div class="timeline-card">
-                    <div class="timeline-day">Day ${stop.day}</div>
-                    <div class="timeline-name">${stop.name}</div>
-                    <div class="timeline-detail">${stop.detail}</div>
+                    <div class="timeline-marker ${markerClass}">${stop.dayLabel}</div>
+                    <div class="timeline-info">
+                        <div class="timeline-name">${stop.name}</div>
+                        <div class="timeline-detail">${stop.detail}</div>
+                    </div>
                     ${badgeHtml}
                 </div>
             `;
