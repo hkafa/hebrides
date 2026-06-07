@@ -34,11 +34,26 @@ class MapManager {
             attributionControl: true,
         }).setView([57.8, -6.8], 7);
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 19,
-        }).addTo(this.map);
+        const osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>';
+
+        const layers = {
+            'Detailed': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: osmAttr,
+                maxZoom: 19,
+            }),
+            'Terrain': L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                attribution: osmAttr + ' &copy; <a href="https://opentopomap.org">OpenTopoMap</a>',
+                maxZoom: 17,
+            }),
+            'Clean': L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: osmAttr + ' &copy; <a href="https://carto.com/">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19,
+            }),
+        };
+
+        layers['Detailed'].addTo(this.map);
+        L.control.layers(layers, null, { position: 'topright' }).addTo(this.map);
     }
 
     async showOverview() {
