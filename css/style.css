@@ -93,6 +93,9 @@ body {
 
 /* === Sections === */
 .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 1rem;
 }
 
@@ -198,6 +201,54 @@ body {
     color: #fff;
     border: 2px solid #fff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Co-op markers */
+.coop-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #fff;
+    background: #00b140;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+/* Co-op toggle button */
+.coop-toggle {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.coop-toggle:hover {
+    border-color: #00b140;
+    color: #00b140;
+}
+
+.coop-toggle--active {
+    background: #00b140;
+    color: #fff;
+    border-color: #00b140;
+}
+
+.coop-toggle--active:hover {
+    background: #009a37;
+    border-color: #009a37;
+    color: #fff;
 }
 
 /* === Timeline === */

@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:www.openstreetmap.org)",
+      "WebFetch(domain:overpass-turbo.eu)"
     ]
   }
 }

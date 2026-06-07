@@ -63,6 +63,7 @@ export class HomeView {
                 <section class="map-section">
                     <div class="section-header">
                         <h2>Route overview</h2>
+                        <button class="coop-toggle" id="coop-toggle">Show Co-ops</button>
                     </div>
                     <div id="map"></div>
                 </section>
@@ -83,6 +84,13 @@ export class HomeView {
         this.mapManager.mount('map');
         this.mapManager.showOverview();
         this._renderTimeline();
+
+        const coopBtn = document.getElementById('coop-toggle');
+        coopBtn.addEventListener('click', () => {
+            const visible = this.mapManager.toggleCoops();
+            coopBtn.textContent = visible ? 'Hide Co-ops' : 'Show Co-ops';
+            coopBtn.classList.toggle('coop-toggle--active', visible);
+        });
     }
 
     _renderTimeline() {

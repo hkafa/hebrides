@@ -14,6 +14,8 @@ class MapManager {
         this.markers = [];
         this.routeLine = null;
         this.routeData = null;
+        this.coopMarkers = [];
+        this.coopVisible = false;
     }
 
     mount(containerId) {
@@ -169,6 +171,42 @@ class MapManager {
             this.routeLine.remove();
             this.routeLine = null;
         }
+    }
+
+    toggleCoops() {
+        this.coopVisible = !this.coopVisible;
+        if (this.coopVisible) {
+            this._showCoops();
+        } else {
+            this._hideCoops();
+        }
+        return this.coopVisible;
+    }
+
+    _showCoops() {
+        if (!this.map) return;
+        this._hideCoops();
+        TRIP_DATA.coops.forEach(coop => {
+            const icon = L.divIcon({
+                className: '',
+                html: '<div class="coop-marker">Co-op</div>',
+                iconSize: [40, 20],
+                iconAnchor: [20, 10],
+                popupAnchor: [0, -12],
+            });
+            const marker = L.marker([coop.lat, coop.lon], { icon })
+                .addTo(this.map)
+                .bindPopup(`
+                    <div class="popup-title">${coop.name}</div>
+                    <div class="popup-detail">${coop.detail}</div>
+                `);
+            this.coopMarkers.push(marker);
+        });
+    }
+
+    _hideCoops() {
+        this.coopMarkers.forEach(m => m.remove());
+        this.coopMarkers = [];
     }
 
     _createNumberedIcon(label, bgColor) {

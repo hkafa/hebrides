@@ -26,6 +26,17 @@ export const TRIP_DATA = {
 
     days: DAYS,
 
+    coops: [
+        { name: 'Co-op Sollas', detail: 'North Uist', lat: 57.6501336, lon: -7.3444987 },
+        { name: 'Co-op Creagorry', detail: 'Benbecula', lat: 57.4105727, lon: -7.3348259 },
+        { name: 'Co-op Daliburgh', detail: 'South Uist', lat: 57.165778, lon: -7.371257 },
+        { name: 'Co-op Portree (Woodlands Rd)', detail: 'Isle of Skye', lat: 57.417597, lon: -6.207789 },
+        { name: 'Co-op Portree (Bank St)', detail: 'Isle of Skye', lat: 57.4128304, lon: -6.1923122 },
+        { name: 'Co-op Castlebay', detail: 'Barra', lat: 56.9553997, lon: -7.4985678 },
+        { name: 'Co-op Stornoway (Cromwell St)', detail: 'Lewis', lat: 58.208771, lon: -6.388179 },
+        { name: 'Co-op Stornoway (MacAulay Rd)', detail: 'Lewis', lat: 58.2162569, lon: -6.3839502 },
+    ],
+
     stops: [
         { name: 'Castlebay', detail: 'Ferry from Oban, Isle of Barra', lat: 56.9546, lon: -7.4884, day: 0, dayLabel: '0', badge: 'start', badgeText: 'start' },
         { name: 'South Uist', detail: 'South Uist', lat: 57.264214, lon: -7.33121, day: 1, dayLabel: '1', badge: null },
