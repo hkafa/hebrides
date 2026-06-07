@@ -40,32 +40,35 @@ export default {
     sections: [
         {
             id: 'ferry',
-            title: 'ferry.info()',
+            title: 'ferry',
             items: [
                 {
                     name: 'Oban \u2192 Castlebay',
                     meta: 'CalMac',
                     notes: 'Long crossing (~5 hours). Book bikes in advance.',
-                    link: null,
+                    link: 'https://www.directferries.co.uk',
                     linkText: 'Book tickets',
                 },
             ],
         },
         {
             id: 'food',
-            title: 'food.options()',
+            title: 'food',
             items: [
-                { name: 'Castlebay Bar', meta: 'pub', notes: 'Pub meals near the ferry terminal' },
+                { name: 'Cafe Kisimul', meta: 'Indian Restaurant', notes: 'Must try according to people on TripAdvisor', link: 'https://www.cafekisimul.co.uk/contact-us', linkText: "Make reservation"  },
+                { name: 'Castlebay Bar', meta: 'pub', notes: 'Pub meals near the ferry terminal', link: 'https://www.castlebayhotel.com/restaurant',  linkText: 'Menu' },
                 { name: 'The Deck', meta: 'cafe', notes: 'Cafe with views of Kisimul Castle' },
                 { name: 'Co-op Castlebay', meta: 'shop', notes: 'Stock up \u2014 limited shops further north' },
             ],
         },
         {
             id: 'campsites',
-            title: 'campsites.list()',
+            title: 'campsites',
             items: [
-                { name: 'Borve Campsite (placeholder)', notes: 'Near beach, basic facilities' },
-                { name: 'Wild camp Vatersay Beach', notes: 'Official start of the Hebridean Way \u2014 stunning beach camping' },
+                { name: 'Scurrival Campsite', notes: 'Great reviews, hot water showers', link: 'https://www.facebook.com/ScurivalCampsite/', linkText: 'website' },
+                { name: 'Barra Sands Campsite ', notes: 'Very close to Scurrival Campsite (north of Barra)', link: "https://barrasands.weebly.com/", linkText: 'website' },
+                { name: 'Wavecrest Campsite', notes: 'Close to castlebay ferry terminal, good facilities and have pizza place next to it', link: "https://www.wavecrestcampsite.co.uk/", linkText: 'website' },
+                { name: 'Wild camp Vatersay Beach', notes: 'Official start of the Hebridean Way \u2014 stunning beach camping', link: "https://barrasands.weebly.com/", linkText: 'website' },
             ],
         },
     ],
